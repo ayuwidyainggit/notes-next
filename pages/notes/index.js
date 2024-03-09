@@ -1,7 +1,9 @@
+import Layout from "@/layout";
+
 export default function notes() {
   return (
-    <div>
+    <Layout metaTitle="list-notes">
       <p>NOTES</p>
-    </div>
+    </Layout>
   );
 }
