@@ -4,7 +4,7 @@ import Head from "next/head";
 
 export default function Layout({ children, metaTitle, metaDesc }) {
   return (
-    <div>
+    <div className=" ">
       <Head>
         <title>My Notes - {metaTitle}</title>
         <meta
@@ -16,7 +16,9 @@ export default function Layout({ children, metaTitle, metaDesc }) {
       </Head>
       <Header />
       {children}
-      <Footer />
+      <div className="">
+        <Footer />
+      </div>
     </div>
   );
 }
