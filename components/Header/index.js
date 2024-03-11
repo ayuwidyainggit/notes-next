@@ -13,8 +13,8 @@ export default function Header() {
         <div
           className={
             activeLink == "Home"
-              ? "text-black   "
-              : "text-gray-500 hover:text-black"
+              ? "text-black cursor-pointer"
+              : "text-gray-500 hover:text-black cursor-pointer"
           }
           onClick={() => handleLinkClick("Home")}
         >
@@ -23,8 +23,8 @@ export default function Header() {
         <div
           className={
             activeLink == "About"
-              ? "text-black   "
-              : "text-gray-500 hover:text-black"
+              ? "text-black cursor-pointer"
+              : "text-gray-500 hover:text-black cursor-pointer"
           }
           onClick={() => handleLinkClick("About")}
         >

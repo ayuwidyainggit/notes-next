@@ -4,7 +4,7 @@ import { FaYoutube } from "react-icons/fa";
 
 export default function Footer() {
   return (
-    <div className=" relative bg-blue-100 text-center py-4 mt-12">
+    <div className=" relative bg-blue-100 text-center py-4 mt-[300px]">
       <div>
         <p className="font-bold text-xs">Notes | Portofolio</p>
       </div>
