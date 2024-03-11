@@ -1,5 +1,5 @@
+import GettingStarted from "@/components/GettingStarted";
 import { Inter } from "next/font/google";
-import GettingStarted from "@/components/Home";
 import Head from "next/head";
 
 const inter = Inter({ subsets: ["latin"] });
