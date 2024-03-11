@@ -204,8 +204,16 @@ export default function Notes({ note }) {
   );
 }
 
-export async function getStaticProps() {
+// export async function getStaticProps() {
+//   const res = await fetch("http://localhost:3000/api/notes");
+//   const note = await res.json();
+//   return { props: { note } };
+// }
+
+export async function getServerSideProps() {
+  // Fetch data from external API
   const res = await fetch("http://localhost:3000/api/notes");
   const note = await res.json();
+  // Pass data to the page via props
   return { props: { note } };
 }
