@@ -2,8 +2,10 @@ export default function NotesModal({
   title,
   onclickCancel,
   onclickSave,
-  value,
-  onChange,
+  valueTitle,
+  valueDesc,
+  onChangeTitle,
+  onChangeDesc,
 }) {
   return (
     <div>
@@ -13,8 +15,8 @@ export default function NotesModal({
           <div className="">
             <input
               type="text"
-              value={value}
-              onChange={onChange}
+              value={valueTitle}
+              onChange={onChangeTitle}
               placeholder="Input title here"
               className="w-full px-4 py-2 bg-gray-100  rounded-md focus:outline-none focus:ring-1 focus:ring-blue-400"
             />
@@ -22,21 +24,21 @@ export default function NotesModal({
           <div className="mt-2">
             <textarea
               type="text"
-              value={value}
-              onChange={onChange}
+              value={valueDesc}
+              onChange={onChangeDesc}
               placeholder="Input description here"
               className="w-full px-4 py-2 bg-gray-100  rounded-md focus:outline-none focus:ring-1 focus:ring-blue-400"
             />
           </div>
           <div className=" flex gap-2 mt-4">
             <button
-              className="bg-green-400 py-2 px-4 rounded-md hover:bg-green-500"
+              className="bg-green-400 py-2 px-4 rounded-md hover:bg-green-500 text-white"
               onClick={onclickCancel}
             >
               Cancel
             </button>
             <button
-              className="bg-red-400 py-2 px-4 rounded-md hover:bg-red-500"
+              className="bg-red-400 py-2 px-4 rounded-md hover:bg-red-500 text-white"
               onClick={onclickSave}
             >
               Save

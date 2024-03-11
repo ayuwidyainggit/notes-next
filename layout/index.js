@@ -2,7 +2,7 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Head from "next/head";
 
-export default function Layout({ children, metaTitle, metaDesc }) {
+export default function Layout({ children, metaTitle, metaDesc, title }) {
   return (
     <div className=" ">
       <Head>
@@ -15,8 +15,12 @@ export default function Layout({ children, metaTitle, metaDesc }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      {children}
-
+      <div className="mt-20 ">
+        <div className=" relative w-[80%]  left-[10%] mb-8">
+          <p className="font-bold text-3xl">{title}</p>
+        </div>
+        {children}
+      </div>
       <Footer />
     </div>
   );

@@ -7,13 +7,13 @@ export default function Modal({ title, onclickYes, onclickNo, content }) {
           <p className="text-sm font-thin text-gray">{content}</p>
           <div className=" flex gap-2 mt-4">
             <button
-              className="bg-green-400 py-2 px-4 rounded-md hover:bg-green-500"
+              className="bg-green-400 py-2 px-4 rounded-md hover:bg-green-500 text-white"
               onClick={onclickYes}
             >
               Ya
             </button>
             <button
-              className="bg-red-400 py-2 px-4 rounded-md hover:bg-red-500"
+              className="bg-red-400 py-2 px-4 rounded-md hover:bg-red-500 text-white"
               onClick={onclickNo}
             >
               Tidak
