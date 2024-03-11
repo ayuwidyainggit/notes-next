@@ -8,7 +8,7 @@ export default function Header() {
     setActiveLink(link);
   };
   return (
-    <div className="fixed top-0 w-full bg-white z-10 shadow-sm ">
+    <div className="fixed top-0 w-full bg-white z-10 shadow-sm  ">
       <div className=" md:flex flex-row justify-end md:justify-between md:p-3 p-10 max-w-6xl mx-auto ">
         <div className="hidden md:flex items-center gap-4 font-bold">
           <div
@@ -43,7 +43,7 @@ export default function Header() {
         <div className="md:hidden flex items-center justify-between font-bold mt-4">
           <Search />
         </div>
-        <div className="md:hidden flex items-center gap-4 font-bold  mt-2 ">
+        <div className="md:hidden flex items-center gap-4 font-bold  mt-2  ">
           <div
             className={
               activeLink == "Home"

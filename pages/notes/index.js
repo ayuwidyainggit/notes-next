@@ -67,17 +67,16 @@ export default function Notes({ note }) {
 
   const handleDelete = async (id) => {
     try {
-      const response = await fetch(
-        `https://paace-f178cafcae7b.nevacloud.io/api/notes/delete/${id}`,
-        {
-          method: "DELETE",
-        }
-      );
+      const response = await fetch(`/api/deleteNotes?id=${id}`, {
+        method: "DELETE",
+      });
       const result = await response.json();
       if (result?.success) {
         router.reload();
       }
-    } catch (error) {}
+    } catch (error) {
+      console.error("Error deleting note:", error);
+    }
   };
 
   const notesById = async (id) => {
@@ -92,31 +91,33 @@ export default function Notes({ note }) {
 
   const handleEditSubmit = async () => {
     try {
-      const response = await fetch(
-        `https://paace-f178cafcae7b.nevacloud.io/api/notes/update/${editNoteId}`,
-        {
-          method: "PATCH",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            title: notesEdit?.title,
-            description: notesEdit?.description,
-          }),
-        }
-      );
+      const response = await fetch(`/api/editNotes?editNoteId=${editNoteId}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          title: notesEdit?.title,
+          description: notesEdit?.description,
+        }),
+      });
       const result = await response.json();
       if (result?.success) {
         closeEditModal();
-        router.push("/notes");
+        router.reload();
       }
       console.log("result ", result);
-    } catch (error) {}
+    } catch (error) {
+      console.error("Error submitting edit:", error);
+    }
   };
 
   return (
     <Layout metaTitle="list-notes" title="List Notes">
-      <div className="relative w-[80%] left-[10%]  grid grid-cols-12  md:gap-4 gap-0">
+      <div className="relative w-[80%] left-[10%]  grid grid-cols-12  md:gap-4 gap-3 md:mt-20 mt-60">
+        <div className="col-span-12 border-b-2 border-gray-300 pb-2">
+          <p className="font-bold text-2xl">My Note</p>
+        </div>
         <div className=" col-span-12  relative">
           <button
             className="bg-blue-400 hover:bg-blue-500 hover:shadow-md p-2 rounded-md text-white"
@@ -125,29 +126,35 @@ export default function Notes({ note }) {
             Add Notes
           </button>
         </div>
-        {note.data.map((item) => (
-          <div
-            key={item.id}
-            className="relative col-span-12 md:col-span-4 border p-8 h-[400px] hover:shadow-lg rounded-md"
-          >
-            <p className="font-bold text-xl text">{item.title}</p>
-            <p className="text-gray-500">{item.description}</p>
-            <div className="absolute bottom-4 right-4 gap-4">
-              <button
-                className="bg-orange-400 w-[80px] py-2 rounded-md hover:shadow-md hover:bg-orange-500 text-white"
-                onClick={() => openEditModal(item?.id)}
+        {note.data.length === 0 ? (
+          <div>No data </div>
+        ) : (
+          <>
+            {note.data.map((item) => (
+              <div
+                key={item.id}
+                className="relative col-span-12 md:col-span-4 border p-8 h-[400px] hover:shadow-lg rounded-md"
               >
-                Edit
-              </button>
-              <button
-                className="bg-red-500 w-[80px] py-2 rounded-md ml-4 hover:shadow-md hover:bg-red-600 text-white"
-                onClick={() => openModal(item?.id)}
-              >
-                Hapus
-              </button>
-            </div>
-          </div>
-        ))}
+                <p className="font-bold text-xl text">{item.title}</p>
+                <p className="text-gray-500">{item.description}</p>
+                <div className="absolute bottom-4 right-4 gap-4">
+                  <button
+                    className="bg-orange-400 w-[80px] py-2 rounded-md hover:shadow-md hover:bg-orange-500 text-white"
+                    onClick={() => openEditModal(item?.id)}
+                  >
+                    Edit
+                  </button>
+                  <button
+                    className="bg-red-500 w-[80px] py-2 rounded-md ml-4 hover:shadow-md hover:bg-red-600 text-white"
+                    onClick={() => openModal(item?.id)}
+                  >
+                    Hapus
+                  </button>
+                </div>
+              </div>
+            ))}
+          </>
+        )}
       </div>
 
       {isModalOpen && (

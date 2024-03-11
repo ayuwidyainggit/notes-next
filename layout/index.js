@@ -15,12 +15,7 @@ export default function Layout({ children, metaTitle, metaDesc, title }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      <div className="mt-20 ">
-        <div className=" relative w-[80%]  left-[10%] mb-8">
-          <p className="font-bold text-3xl">{title}</p>
-        </div>
-        {children}
-      </div>
+      {children}
       <Footer />
     </div>
   );
